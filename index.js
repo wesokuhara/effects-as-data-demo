@@ -8,11 +8,6 @@ const config = {
   }
 };
 
-// call(config, handlers, getUsers, 1, 2, 3)
-//   .then(console.log)
-//   .catch(console.error);
-
-// Using buildFunctions which maps each function to use call()
 const fxns = buildFunctions(config, handlers, { getUsers });
 fxns.getUsers(1, 2, 3, 4)
   .then(console.log)

@@ -41,9 +41,9 @@ function call(config, handlers, fn, ...args) {};
 
 /* Build Functions
 buildFunctions() will transform effects-as-data functions into normal
-promise-returning functions, and return an object with the mapped functions.
-Then these functions can be passed around and called anywhere.
-buildFunctions() is imported from 'effects-as-data'.
+promise-returning functions by mapping each using call(), and return
+an object with the mapped functions. Then these functions can be passed
+around and called anywhere. buildFunctions() is imported from 'effects-as-data'.
 */
 const fxns = buildFunctions(config, handlers, { getUser });
 fxns.getUser().then(console.log);
