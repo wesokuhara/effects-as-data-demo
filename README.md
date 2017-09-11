@@ -14,7 +14,7 @@ function httpGet() {
 
 ### Handlers
 Handlers map a command to their respective function that actually
-performs the effect. Most handlers are provided in 'effects-as-data-universal'.
+performs the effect. Most handlers are provided in `effects-as-data-universal`.
 ```js
 const handlers = {
   httpGet: () => {
@@ -27,7 +27,7 @@ const handlers = {
 ```
 
 ### Functions
-Functions contain all of the business logic and 'yield' the commands.
+Functions contain all of the business logic and yield the commands.
 ```js
 function* getUser(id) {
   return yield cmds.httpGet(`https://swapi.co/api/people/${id}`);
@@ -35,19 +35,19 @@ function* getUser(id) {
 ```
 
 ### Call
-call() hooks up your handlers to the commands in your functions. In this way,
-effects-as-data decouples the effects from your business logic. call() will
+`call()` hooks up your handlers to the commands in your functions. In this way,
+the effects are decoupled from your business logic. `call()` will
 also perform the function and return a promise.
-call() is imported from 'effects-as-data'.
+`call()` is imported from `effects-as-data`.
 ```js
 function call(config, handlers, fn, ...args) {};
 ```
 
 ### Build Functions
-buildFunctions() will transform effects-as-data functions into normal
-promise-returning functions by mapping each using call(), and return
-an object with the mapped functions. Then these functions can be passed
-around and called anywhere. buildFunctions() is imported from 'effects-as-data'.
+`buildFunctions()` will transform your effects-as-data functions into normal
+promise-returning functions by mapping each using `call()`, and return
+an object containing the mapped functions. Then these functions can be passed
+around and called anywhere. `buildFunctions()` is imported from `effects-as-data`.
 ```js
 const fxns = buildFunctions(config, handlers, { getUser });
 fxns.getUser().then(console.log);
