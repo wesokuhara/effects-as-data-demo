@@ -1,7 +1,7 @@
 # Effects as Data Demo
 
 ### Commands
-Commands are simply JSON.  They designate which effect to happen
+Commands are simply JavaScript objects.  They designate which effect to happen
 and set of arguments for that effect.
 ```js
 function httpGet() {
@@ -27,7 +27,7 @@ const handlers = {
 ```
 
 ### Functions
-Functions contain all of the business logic and yield the commands.
+Functions are function generators that contain all of the business logic and yield the commands.
 ```js
 function* getUser(id) {
   return yield cmds.httpGet(`https://swapi.co/api/people/${id}`);
@@ -38,7 +38,7 @@ function* getUser(id) {
 `call()` hooks up your handlers to the commands in your functions. In this way,
 the effects are decoupled from your business logic. `call()` will
 also perform the function and return a promise.
-`call()` is imported from `effects-as-data`.
+`call()` is imported from `effects-as-data`. Note: `call()` is different than the command 'call'.
 ```js
 function call(config, handlers, fn, ...args) {};
 ```
